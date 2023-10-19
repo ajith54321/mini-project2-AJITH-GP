@@ -1,0 +1,20 @@
+server:
+  port: 8999
+
+eureka:
+  instance:
+    hostname: localhost  
+
+spring:
+  application:
+    name: GatewayAPI_Service
+
+  cloud:
+    gateway:
+      routes:
+
+        - id: sportsproduct-service
+          uri: lb://sportsproduct-service
+          predicates:
+            - Path=/sps/**
+          filters:
